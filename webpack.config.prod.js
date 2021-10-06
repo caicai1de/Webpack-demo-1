@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { IgnorePlugin } = require('webpack');
 
 const base = require('./webpack.config.base');
 
@@ -16,9 +17,9 @@ module.exports = {
                 ignoreOrder: false,
             })
     ],
-
     module: {
         rules: [
+            ...base.module.rules,
             {
                 test: /\.css$/,
                 use: [{
